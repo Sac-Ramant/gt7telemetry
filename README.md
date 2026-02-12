@@ -3,6 +3,7 @@
     Python script originally from https://github.com/Bornhall/gt7telemetry
     who take it from https://github.com/lmirel/mfc/blob/master/clients/gt7racedata.py
     I edited it to transform in what I need (the opening of the port 9999 for a second script)
+    A lot of information can be found there too: https://github.com/Nenkai/PDTools/
 
 (The Current Lap Time don't work, I didn't find the good offset value.)
 
