@@ -1,6 +1,8 @@
-Python script originally from https://github.com/Bornhall/gt7telemetry
-who take it from https://github.com/lmirel/mfc/blob/master/clients/gt7racedata.py
-I edited it to transform in what I need (the opening of the port 9999 for a second script)
+
+    
+    Python script originally from https://github.com/Bornhall/gt7telemetry
+    who take it from https://github.com/lmirel/mfc/blob/master/clients/gt7racedata.py
+    I edited it to transform in what I need (the opening of the port 9999 for a second script)
 
 🏎️ GT7 Telemetry Bridge & Dashboard 🏎️
 (The Current Lap Time don't work, I didn't find the good offset value.)
