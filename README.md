@@ -4,9 +4,12 @@
     who take it from https://github.com/lmirel/mfc/blob/master/clients/gt7racedata.py
     I edited it to transform in what I need (the opening of the port 9999 for a second script)
 
-🏎️ GT7 Telemetry Bridge & Dashboard 🏎️
 (The Current Lap Time don't work, I didn't find the good offset value.)
-This Python script intercepts the UDP telemetry stream from Gran Turismo 7 (PS4/PS5). It provides a comprehensive live dashboard in your terminal and functions as a data bridge, forwarding processed telemetry to external applications (like an AI agent or custom data logger) via a secondary UDP socket.
+
+🏎️ GT7 Telemetry Bridge & Dashboard 🏎️
+
+This Python script intercepts the UDP telemetry stream from Gran Turismo 7 (PS4/PS5). 
+It provides a comprehensive live dashboard in your terminal and functions as a data bridge, forwarding processed telemetry to external applications (like an AI agent or custom data logger) via a secondary UDP socket.
 Key Features
 
     Live Terminal UI: A full-screen dashboard displaying speed, gear, RPM, tire temperatures, slip ratios, oil/water temps, and G-force data.
