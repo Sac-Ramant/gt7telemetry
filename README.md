@@ -1,21 +1,46 @@
-# gt7telemetry
-Python script to display GT7 telemetry data.
+Python script originally from https://github.com/Bornhall/gt7telemetry
+who take it from https://github.com/lmirel/mfc/blob/master/clients/gt7racedata.py
+I edited it to transform in what I need (the opening of the port 9999 for a second script)
 
-**Needs to be run from the terminal**, and works best with a terminal of at least 92 x 42 characters. The output is in a separate buffer, but you can comment out lines 10-29 to just write to your current terminal (might want to clear the terminal first).
+🏎️ GT7 Telemetry Bridge & Dashboard 🏎️
 
-Run like this (substitute with your own console's LAN IP address):
+This Python script intercepts the UDP telemetry stream from Gran Turismo 7 (PS4/PS5). It provides a comprehensive live dashboard in your terminal and functions as a data bridge, forwarding processed telemetry to external applications (like an AI agent or custom data logger) via a secondary UDP socket.
+Key Features
 
-    python3 gt7telemetry.py 129.168.1.123
+    Live Terminal UI: A full-screen dashboard displaying speed, gear, RPM, tire temperatures, slip ratios, oil/water temps, and G-force data.
 
-This work is based purely on the shoulders of others. Python script originally from https://github.com/lmirel/mfc/blob/master/clients/gt7racedata.py
+    Salsa20 Decryption: Automatically handles the decryption of the GT7 data stream using the required library.
 
-Thanks to the help of the people of GTPlanet, specifically the thread https://www.gtplanet.net/forum/threads/gt7-is-compatible-with-motion-rig.410728 and people like Nenkai, Stoobert and more.
+    Session Intelligence: Intelligent status detection (In Race, Paused, Menu, or Replay) to filter data correctly.
 
-If anyone can gain anything from this, feel free to do so!!
+    Nexus Bridge: Forwards structured JSON data to 127.0.0.1:9999, allowing other scripts to "subscribe" to the car's state without needing to handle decryption themselves.
 
-![Screenshot of output](https://user-images.githubusercontent.com/3602224/182450262-56992d54-409d-4fb7-bfec-35b04dc7f6aa.png)
+    Automated Heartbeat: Manages the "Heartbeat" signal required by the PlayStation to keep the data stream active.
 
-## Requirements
-You will need python 3.x installed, and you need to install the salsa20 module via pip:
+![Screenshot](Screenshot-1.png)
 
-    pip3 install salsa20
+Requirements
+
+To run this script, you need Python 3.x and the pycryptodome library, which provides the Salsa20 cipher used by Polyphony Digital to encrypt the packets.
+Installation via Pip
+
+Run the following command in your terminal:
+Bash
+
+pip install pycryptodome
+
+(Note: The script imports Crypto.Cipher, which is provided by the pycryptodome package. Avoid installing the old pycrypto package as it is no longer maintained.)
+How to Use
+
+    Find your PlayStation IP: Go to your PS5/PS4 Network Settings and note the IP address.
+
+    Run the script:
+    Bash
+
+    python3 gt7telemetry.py <your-playstation-ip>
+
+    Start Driving: As soon as you enter a track, the terminal will populate with live data.
+
+Data Forwarding (The Bridge)
+
+The script is configured to send a simplified JSON packet to Port 9999 on your local machine. If you are developing another tool (like a dashboard,logger), simply listen on UDP 127.0.0.1:9999.
